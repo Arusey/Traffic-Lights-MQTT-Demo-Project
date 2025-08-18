@@ -28,7 +28,7 @@ The system supports multiple modes:
 
 ### 1. Configure MQTT Connection
 
-Create a `mqtt-config.json` file in the project root:
+In each Project there is a `mqtt-config.json` file in the project root:
 
 ```json
 {
@@ -40,21 +40,20 @@ Create a `mqtt-config.json` file in the project root:
 ```
 
 **Important**: The json file contents will be shared separately since the repo is public
+**Replace these values with the IP address and credentials shared via Email for the connection to the broker.**
 
 ### 2. iOS App Setup
 
 1. Open `Traffic Lights MQTT.xcodeproj` in Xcode
 2. Add `mqtt-config.json` to the iOS app bundle:
-   - Drag the file into the iOS app target in Xcode
-   - Ensure "Add to target" includes the iOS app
+   - Update the broker IP address and credentials shared
 3. Build and run on your iOS device/simulator
 
 ### 3. macOS Simulator Setup
 
 1. Open `Traffic Lights MQTT Simulator.xcodeproj` in Xcode
 2. Add `mqtt-config.json` to the macOS app bundle:
-   - Drag the file into the macOS app target in Xcode
-   - Ensure "Add to target" includes the macOS app
+   - Update the broker IP address and credentials shared
 3. Build and run the macOS simulator
 
 ### 4. Usage
