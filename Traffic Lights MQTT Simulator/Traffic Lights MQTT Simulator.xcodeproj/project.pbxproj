@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0BCAD7892E51DE5900DB6E55 /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = 0BCAD77A2E51DDB000DB6E55 /* CocoaMQTT */; };
+		4E3774872E5315A600D71513 /* mqtt-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E3774862E5315A600D71513 /* mqtt-config.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0BCAD76B2E51DD8600DB6E55 /* Traffic Lights MQTT Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Traffic Lights MQTT Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E3774862E5315A600D71513 /* mqtt-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "mqtt-config.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -37,6 +39,7 @@
 		0BCAD7622E51DD8600DB6E55 = {
 			isa = PBXGroup;
 			children = (
+				4E3774862E5315A600D71513 /* mqtt-config.json */,
 				0BCAD76D2E51DD8600DB6E55 /* Traffic Lights MQTT Simulator */,
 				0BCAD76C2E51DD8600DB6E55 /* Products */,
 			);
@@ -118,6 +121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3774872E5315A600D71513 /* mqtt-config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
