@@ -1,6 +1,6 @@
 {
-  "host": "YOUR_MQTT_BROKER_IP",
+  "host": "localhost",
   "port": 1883,
-  "username": "your_username",
-  "password": "your_password"
+  "username": "",
+  "password": ""
 }

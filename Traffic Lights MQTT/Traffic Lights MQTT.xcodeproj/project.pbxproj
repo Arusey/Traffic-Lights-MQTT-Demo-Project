@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0BCAD7952E51E8AE00DB6E55 /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = 0BCAD7942E51E8AE00DB6E55 /* CocoaMQTT */; };
-		4E3774892E5315B300D71513 /* mqtt-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E3774882E5315B300D71513 /* mqtt-config.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +31,6 @@
 		0BCAD7332E51DA6A00DB6E55 /* Traffic Lights MQTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Traffic Lights MQTT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BCAD7452E51DA6C00DB6E55 /* Traffic Lights MQTTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic Lights MQTTTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BCAD74F2E51DA6C00DB6E55 /* Traffic Lights MQTTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Traffic Lights MQTTUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E3774882E5315B300D71513 /* mqtt-config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "mqtt-config.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -82,7 +80,6 @@
 		0BCAD72A2E51DA6A00DB6E55 = {
 			isa = PBXGroup;
 			children = (
-				4E3774882E5315B300D71513 /* mqtt-config.json */,
 				0BCAD7352E51DA6A00DB6E55 /* Traffic Lights MQTT */,
 				0BCAD7482E51DA6C00DB6E55 /* Traffic Lights MQTTTests */,
 				0BCAD7522E51DA6C00DB6E55 /* Traffic Lights MQTTUITests */,
@@ -224,7 +221,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E3774892E5315B300D71513 /* mqtt-config.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

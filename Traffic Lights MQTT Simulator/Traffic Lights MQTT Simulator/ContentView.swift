@@ -7,14 +7,14 @@
 
 import SwiftUI
 struct ContentView: View {
-    @StateObject private var simulator = ArduinoTrafficLightSimulator()
+    @StateObject private var viewModel = DependencyContainer.shared.makeSimulatorViewModel()
     
     var body: some View {
         HSplitView {
             VStack(spacing: 20) {
-                TrafficLightVisualization(state: simulator.state)
+                TrafficLightVisualization(state: viewModel.state)
                 
-                ConnectionControls(simulator: simulator)
+                ConnectionControls(viewModel: viewModel)
                 
                 Spacer()
             }
@@ -22,9 +22,9 @@ struct ContentView: View {
             .padding()
             
             VStack(spacing: 15) {
-                SystemStatusView(state: simulator.state)
+                SystemStatusView(state: viewModel.state)
                 
-                LogView(state: simulator.state)
+                LogView(state: viewModel.state)
             }
             .frame(minWidth: 400)
             .padding()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConnectionStatusCard: View {
-    @EnvironmentObject var mqttManager: TrafficLightMQTTManager
+    @EnvironmentObject var viewModel: TrafficLightViewModel
     
     var body: some View {
         HStack {
@@ -16,14 +16,14 @@ struct ConnectionStatusCard: View {
                 .fill(connectionStatusColor)
                 .frame(width: 12, height: 12)
             
-            Text(mqttManager.connectionStatus)
+            Text(viewModel.connectionStatus)
                 .font(.headline)
             
             Spacer()
             
-            if !mqttManager.isConnected {
+            if !viewModel.isConnected {
                 Button("Retry") {
-                    mqttManager.connect()
+                    viewModel.connect()
                 }
                 .font(.caption)
                 .padding(.horizontal, 12)
@@ -39,7 +39,7 @@ struct ConnectionStatusCard: View {
     }
     
     private var connectionStatusColor: Color {
-        switch mqttManager.connectionStatus {
+        switch viewModel.connectionStatus {
         case "Connected":
             return .green
         case "Disconnected":

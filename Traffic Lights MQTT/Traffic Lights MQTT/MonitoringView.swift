@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MonitoringView: View {
-    @EnvironmentObject var mqttManager: TrafficLightMQTTManager
+    @EnvironmentObject var viewModel: MonitoringViewModel
+    @EnvironmentObject var trafficLightViewModel: TrafficLightViewModel
     
     var body: some View {
         NavigationView {
@@ -20,14 +21,14 @@ struct MonitoringView: View {
                     ], spacing: 15) {
                         StatusCard(
                             title: "Connection",
-                            value: mqttManager.connectionStatus,
+                            value: viewModel.connectionStatus,
                             icon: "wifi",
-                            color: mqttManager.isConnected ? .green : .red
+                            color: viewModel.isConnected ? .green : .red
                         )
                         
                         StatusCard(
                             title: "Current Mode",
-                            value: mqttManager.trafficLightState.mode.displayName,
+                            value: trafficLightViewModel.trafficLightState.mode.displayName,
                             icon: "stoplights",
                             color: .blue
                         )
@@ -41,7 +42,7 @@ struct MonitoringView: View {
                         
                         StatusCard(
                             title: "Last Update",
-                            value: timeString(from: mqttManager.trafficLightState.lastUpdate),
+                            value: timeString(from: trafficLightViewModel.trafficLightState.lastUpdate),
                             icon: "clock",
                             color: .purple
                         )
@@ -55,18 +56,18 @@ struct MonitoringView: View {
                             
                             Spacer()
                             
-                            Text("\(mqttManager.receivedMessages.count) messages")
+                            Text("\(viewModel.receivedMessages.count) messages")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
                         
-                        if mqttManager.receivedMessages.isEmpty {
+                        if viewModel.receivedMessages.isEmpty {
                             Text("No messages yet")
                                 .foregroundColor(.gray)
                                 .italic()
                                 .padding()
                         } else {
-                            ForEach(mqttManager.receivedMessages.prefix(20)) { message in
+                            ForEach(viewModel.receivedMessages.prefix(20)) { message in
                                 MessageRow(message: message)
                             }
                         }
@@ -86,9 +87,9 @@ struct MonitoringView: View {
     
     private var activeLightsText: String {
         let lights = [
-            mqttManager.trafficLightState.redOn ? "Red" : nil,
-            mqttManager.trafficLightState.yellowOn ? "Yellow" : nil,
-            mqttManager.trafficLightState.greenOn ? "Green" : nil
+            trafficLightViewModel.trafficLightState.redOn ? "Red" : nil,
+            trafficLightViewModel.trafficLightState.yellowOn ? "Yellow" : nil,
+            trafficLightViewModel.trafficLightState.greenOn ? "Green" : nil
         ].compactMap { $0 }
         
         return lights.isEmpty ? "None" : lights.joined(separator: ", ")

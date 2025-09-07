@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ManualControlsView: View {
-    @EnvironmentObject var mqttManager: TrafficLightMQTTManager
+    @EnvironmentObject var viewModel: TrafficLightViewModel
     
     var body: some View {
         VStack(spacing: 15) {
@@ -18,7 +18,7 @@ struct ManualControlsView: View {
             
             HStack(spacing: 20) {
                 Button(action: {
-                    mqttManager.setLight(.red, on: !mqttManager.trafficLightState.redOn)
+                    viewModel.setLight(.red, on: !viewModel.trafficLightState.redOn)
                 }) {
                     VStack {
                         Circle()
@@ -26,7 +26,7 @@ struct ManualControlsView: View {
                             .frame(width: 50, height: 50)
                         Text("Red")
                             .font(.caption)
-                        Text(mqttManager.trafficLightState.redOn ? "ON" : "OFF")
+                        Text(viewModel.trafficLightState.redOn ? "ON" : "OFF")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     }
@@ -34,7 +34,7 @@ struct ManualControlsView: View {
                 .buttonStyle(PlainButtonStyle())
                 
                 Button(action: {
-                    mqttManager.setLight(.yellow, on: !mqttManager.trafficLightState.yellowOn)
+                    viewModel.setLight(.yellow, on: !viewModel.trafficLightState.yellowOn)
                 }) {
                     VStack {
                         Circle()
@@ -42,7 +42,7 @@ struct ManualControlsView: View {
                             .frame(width: 50, height: 50)
                         Text("Yellow")
                             .font(.caption)
-                        Text(mqttManager.trafficLightState.yellowOn ? "ON" : "OFF")
+                        Text(viewModel.trafficLightState.yellowOn ? "ON" : "OFF")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     }
@@ -50,7 +50,7 @@ struct ManualControlsView: View {
                 .buttonStyle(PlainButtonStyle())
                 
                 Button(action: {
-                    mqttManager.setLight(.green, on: !mqttManager.trafficLightState.greenOn)
+                    viewModel.setLight(.green, on: !viewModel.trafficLightState.greenOn)
                 }) {
                     VStack {
                         Circle()
@@ -58,7 +58,7 @@ struct ManualControlsView: View {
                             .frame(width: 50, height: 50)
                         Text("Green")
                             .font(.caption)
-                        Text(mqttManager.trafficLightState.greenOn ? "ON" : "OFF")
+                        Text(viewModel.trafficLightState.greenOn ? "ON" : "OFF")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     }

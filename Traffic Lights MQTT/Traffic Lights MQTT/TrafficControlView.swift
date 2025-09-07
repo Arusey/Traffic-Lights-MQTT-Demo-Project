@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrafficControlView: View {
-    @EnvironmentObject var mqttManager: TrafficLightMQTTManager
+    @EnvironmentObject var viewModel: TrafficLightViewModel
     @State private var selectedMode: TrafficLightMode = .off
     
     var body: some View {
@@ -17,7 +17,7 @@ struct TrafficControlView: View {
                 VStack(spacing: 25) {
                     ConnectionStatusCard()
                     
-                    TrafficLightView(state: mqttManager.trafficLightState)
+                    TrafficLightView(state: viewModel.trafficLightState)
                     
                     VStack(spacing: 15) {
                         Text("Control Mode")
@@ -31,7 +31,7 @@ struct TrafficControlView: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .onChange(of: selectedMode) { newMode in
-                            mqttManager.setMode(newMode)
+                            viewModel.setMode(newMode)
                         }
                     }
                     .padding()

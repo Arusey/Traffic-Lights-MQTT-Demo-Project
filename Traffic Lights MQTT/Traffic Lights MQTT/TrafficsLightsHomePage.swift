@@ -14,7 +14,9 @@ struct TrafficLightApp_Previews: PreviewProvider {
 }
 
 struct TrafficsLightsHomePage: View {
-    @StateObject private var mqttManager = TrafficLightMQTTManager()
+    @StateObject private var trafficLightViewModel = DependencyContainer.shared.makeTrafficLightViewModel()
+    @StateObject private var monitoringViewModel = DependencyContainer.shared.makeMonitoringViewModel()
+    @StateObject private var settingsViewModel = DependencyContainer.shared.makeSettingsViewModel()
     
     var body: some View {
         TabView {
@@ -23,24 +25,27 @@ struct TrafficsLightsHomePage: View {
                     Image(systemName: "car.2")
                     Text("Control")
                 }
-                .environmentObject(mqttManager)
+                .environmentObject(trafficLightViewModel)
             
             MonitoringView()
                 .tabItem {
                     Image(systemName: "chart.line.uptrend.xyaxis")
                     Text("Monitor")
                 }
-                .environmentObject(mqttManager)
+                .environmentObject(monitoringViewModel)
+                .environmentObject(trafficLightViewModel)
             
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
-                .environmentObject(mqttManager)
+                .environmentObject(settingsViewModel)
+                .environmentObject(trafficLightViewModel)
+                .environmentObject(monitoringViewModel)
         }
         .onAppear {
-            mqttManager.connect()
+            trafficLightViewModel.connect()
         }
     }
 }

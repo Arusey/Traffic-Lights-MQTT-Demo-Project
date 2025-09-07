@@ -8,34 +8,34 @@
 import SwiftUI
 
 struct ConnectionControls: View {
-    let simulator: ArduinoTrafficLightSimulator
+    let viewModel: SimulatorViewModel
     
     var body: some View {
         VStack(spacing: 15) {
             HStack {
                 Circle()
-                    .fill(simulator.state.isConnected ? .green : .red)
+                    .fill(viewModel.state.isConnected ? .green : .red)
                     .frame(width: 12, height: 12)
                 
-                Text(simulator.state.connectionStatus)
+                Text(viewModel.state.connectionStatus)
                     .font(.headline)
                 
                 Spacer()
             }
             
             HStack(spacing: 10) {
-                Button(simulator.state.isConnected ? "Disconnect" : "Connect") {
-                    if simulator.state.isConnected {
-                        simulator.disconnect()
+                Button(viewModel.state.isConnected ? "Disconnect" : "Connect") {
+                    if viewModel.state.isConnected {
+                        viewModel.disconnect()
                     } else {
-                        simulator.connect()
+                        viewModel.connect()
                     }
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(simulator.state.isConnected ? .red : .green)
+                .tint(viewModel.state.isConnected ? .red : .green)
                 
                 Button("Clear Logs") {
-                    simulator.state.logMessages.removeAll()
+                    viewModel.state.logMessages.removeAll()
                 }
                 .buttonStyle(.bordered)
             }
